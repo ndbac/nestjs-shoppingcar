@@ -9,13 +9,16 @@ content-type: application/json
     "mileage": 12300,
     "lng": 0,
     "lat": 0,
-    "price": 500000
+    "price": 0
 }
 
 ### Approve an existing report
-PATCH http://localhost:3000/reports/12
+PATCH http://localhost:3000/reports/14
 content-type: application/json
 
 {
     "approved": true
 }
+
+### Get an estimate for an existing report
+GET http://localhost:3000/reports?make=Vinfast&model=VF34&lng=0&lat=0&mileage=12300&year=2020
