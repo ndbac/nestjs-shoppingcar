@@ -18,7 +18,10 @@ import { ReportDto } from './dtos/report.dto';
 import { Serialize } from '../interceptors/serialize.interceptor';
 import { ApproveReportDto } from './dtos/approve-report.dto';
 import { GetEstimateDto } from './dtos/get-estimate.dto';
+import { ApiTags, ApiBasicAuth } from '@nestjs/swagger';
 
+@ApiTags('reports')
+@ApiBasicAuth()
 @Controller('reports')
 export class ReportsController {
   constructor(private reportsService: ReportsService) {}

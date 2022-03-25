@@ -20,7 +20,9 @@ import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { User } from './user.entity';
 import { AuthGuard } from '../guards/auth.guard';
+import { ApiTags, ApiBasicAuth } from '@nestjs/swagger';
 
+@ApiTags('users')
 @Controller('auth')
 @Serialize(UserDto)
 export class UsersController {
@@ -68,6 +70,12 @@ export class UsersController {
     return this.UsersService.find(email);
   }
 
+  @Get('/users')
+  findAllUsersWithoutEmail() {
+    return this.UsersService.findAll();
+  }
+
+  @ApiBasicAuth()
   @Delete('/:id')
   removeUser(@Param('id') id: string) {
     return this.UsersService.remove(parseInt(id));
